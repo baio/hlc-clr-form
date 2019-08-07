@@ -152,8 +152,7 @@ const definition: ClrFormLayouts.ClrFormLayout = {
 
 @Component({
   selector: 'my-app',
-  template: `<hlc-clr-form [group]="definition"></hlc-clr-form>`,
-  styles: ['margin: 10px']
+  template: `<hlc-clr-form [group]="definition"></hlc-clr-form>`
 })
 export class AppComponent {
   readonly definition = definition;
