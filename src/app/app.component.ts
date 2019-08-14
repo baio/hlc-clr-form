@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ClrFormLayouts } from '@ng-holistic/clr-forms';
 import { TextMask } from '@ng-holistic/clr-controls';
 import { map } from 'rxjs/operators';
+import { FormGroup, Validators } from '@angular/forms';
+
 
 const typeaheadSearch = text$ =>
   text$.pipe(
@@ -16,7 +18,7 @@ const typeaheadSearch = text$ =>
     )
   )
 
-const definition: ClrFormLayouts.ClrFormLayout = {
+const definition = (form: FormGroup): ClrFormLayouts.ClrFormLayout => ({
   kind: 'fields',
   fields: [
     {
@@ -132,6 +134,7 @@ const definition: ClrFormLayouts.ClrFormLayout = {
     {
       id: 'options',
       kind: 'OptionsField',
+      hidden: form.valueChanges.pipe(map(val => val.toggle === true)),
       props: {
         label: 'Options',
         items: [{ key: 'opt1', label: 'opt1' }, { key: 'opt2', label: 'opt2' }]
@@ -146,7 +149,7 @@ const definition: ClrFormLayouts.ClrFormLayout = {
       }
     }
   ]
-};
+});
 
 
 
