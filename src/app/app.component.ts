@@ -98,6 +98,7 @@ const definition = (form: FormGroup): ClrFormLayouts.ClrFormLayout => ({
     {
       id: 'multiSelect',
       kind: 'MultiSelectField',
+      hidden: form.valueChanges.pipe(map(val => val.toggle === true)),
       props: {
         label: 'Multi select',
         items: [{ key: 'one', label: 'one' }, { key: 'two', label: 'two' }, { key: 'three', label: 'three' }]
@@ -114,7 +115,6 @@ const definition = (form: FormGroup): ClrFormLayouts.ClrFormLayout => ({
     {
       id: 'options',
       kind: 'OptionsField',
-      hidden: form.valueChanges.pipe(map(val => val.toggle === true)),
       props: {
         label: 'Options',
         items: [{ key: 'opt1', label: 'opt1' }, { key: 'opt2', label: 'opt2' }]
