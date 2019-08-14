@@ -104,26 +104,6 @@ const definition = (form: FormGroup): ClrFormLayouts.ClrFormLayout => ({
       }
     },
     {
-      id: 'typeahead',
-      kind: 'TypeaheadField',
-      props: {
-        label: 'Typeahead',
-        config: {
-          search: typeaheadSearch
-        }
-      }
-    },
-    {
-      id: 'tags',
-      kind: 'TagsField',
-      props: {
-        label: 'Tags',
-        config: {
-          search: typeaheadSearch
-        }
-      }
-    },
-    {
       id: 'toggle',
       kind: 'ToggleField',
       props: {
