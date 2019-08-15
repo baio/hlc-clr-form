@@ -4,21 +4,7 @@ import { TextMask } from '@ng-holistic/clr-controls';
 import { map } from 'rxjs/operators';
 import { FormGroup, Validators } from '@angular/forms';
 
-
-const typeaheadSearch = text$ =>
-  text$.pipe(
-    map((args: any) =>
-      [
-        { key: 'one', label: 'one' },
-        { key: 'two', label: 'two' },
-        { key: 'three', label: 'three' }
-      ].filter(f =>
-        args.kind === 'SearchArgTyping' ? !args.term || f.label.startsWith(args.term) : true
-      )
-    )
-  )
-
-const definition = (form: FormGroup): ClrFormLayouts.ClrFormLayout => ({
+const definition: ClrFormLayouts.ClrFormLayout = {
   kind: 'fields',
   fields: [
     {
@@ -98,7 +84,6 @@ const definition = (form: FormGroup): ClrFormLayouts.ClrFormLayout => ({
     {
       id: 'multiSelect',
       kind: 'MultiSelectField',
-      hidden: form.valueChanges.pipe(map(val => val.toggle === true)),
       props: {
         label: 'Multi select',
         items: [{ key: 'one', label: 'one' }, { key: 'two', label: 'two' }, { key: 'three', label: 'three' }]
@@ -129,9 +114,7 @@ const definition = (form: FormGroup): ClrFormLayouts.ClrFormLayout => ({
       }
     }
   ]
-});
-
-
+};
 
 @Component({
   selector: 'my-app',
